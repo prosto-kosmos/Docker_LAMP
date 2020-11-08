@@ -8,15 +8,15 @@ That mean complete environment for development on PHP language.
 
 Just copy docker-compose.yml from dist example
 
-    cp docker-compose.dist.yml docker-compose.yml
+    sudo cp docker-compose.dist.yml docker-compose.yml
 
 Then build
 
-    docker-compose build
+    sudo docker-compose build
 
 And run composition
 
-    docker-compose up -d
+    sudo docker-compose up -d
 
 After this you may go to http://localhost and will see the default
 index page.
