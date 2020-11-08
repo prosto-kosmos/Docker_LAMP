@@ -1,0 +1,32 @@
+version: "3.5"
+
+services:
+
+  php:
+    build:
+      context: php
+    ports:
+    - 80:80
+    volumes:
+    - ./app:/var/www/html
+
+  mardiadb:
+    image: mariadb:10.4
+    ports:
+    - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: rootroot
+      MYSQL_DATABASE: odb2
+      MYSQL_USER: test_user
+      MYSQL_PASSWORD: test_pass
+    volumes:
+    - ./databases/mariadb:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+    - 8080:80
+    environment:
+      PMA_HOST: mardiadb
+      PMA_USER: root
+      PMA_PASSWORD: rootroot
