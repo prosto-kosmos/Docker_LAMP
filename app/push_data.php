@@ -7,11 +7,13 @@ require_once __DIR__ . '/db_connect.php';
 $db = new DB_CONNECT();
 $con = $db->connect();
 
+mysqli_set_charset($con,'utf8' );
+
 // получаем значения 
-$MODE = $_REQUEST[MODE];
-$ID = $_REQUEST[ID];
-$SPEED = $_REQUEST[SPEED];//надо проверить на пустоту
-$RPM = $_REQUEST[RPM];//надо проверить на пустоту
+$MODE = $_REQUEST['MODE'];
+$ID = $_REQUEST['ID'];
+$SPEED = $_REQUEST['SPEED'];//надо проверить на пустоту
+$RPM = $_REQUEST['RPM'];//надо проверить на пустоту
 
 if ($MODE == "insert"){
 	$query = "INSERT INTO `logs` (`driver_id`, `speed`, `rpm`) VALUES ($ID,'$SPEED','$RPM');";

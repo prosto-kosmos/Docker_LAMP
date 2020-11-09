@@ -19,12 +19,14 @@ RUN docker-php-ext-install bcmath pdo_mysql
 # Install libraries for compiling GD, then build it
 RUN apt-get install -fyqq libfreetype6 libfreetype6-dev libpng16-16 libpng-dev libjpeg62-turbo libjpeg62-turbo-dev \
  && docker-php-ext-install gd \
- && apt-get remove -fyqq libfreetype6-dev libpng-dev libjpeg62-turbo-dev
+ && apt-get remove -fyqq libfreetype6-dev libjpeg62-turbo-dev
 
 # Add ZIP archives support
 RUN apt-get install -fyqq zip libzip-dev \
  && docker-php-ext-install zip \
  && apt-get remove -fyqq libzip-dev
+ 
+RUN docker-php-ext-install gd mysqli
 
 # Install xdebug
 RUN pecl install xdebug \
